@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>开中印象 | 学生自制宣传站</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- 无障碍支持 -->
+    <meta name="theme-color" content="#0099ff">
+</head>
+<body class="theme-default">
+    <!-- 合规性提示遮罩 (首次访问显示) -->
+    <div id="complianceModal" class="modal active">
+        <div class="modal-content">
+            <h3>重要提示</h3>
+            <p>本网站为<strong>重庆市开州中学学生自制</strong>的非官方宣传网站，旨在展示校园生活。</p>
+            <p>它<strong>并非</strong>重庆市开州中学官方网站。如需联系学校官方，请搜索微信公众号或抖音官方账号<strong>“重庆市开州中学”</strong>，或直接致电/致函学校。</p>
+            <p>本网站不对内容作任何形式的保证，感谢理解。</p>
+            <button onclick="acceptCompliance()">我已知晓，继续浏览</button>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 (桌面/Android模式下显示) -->
+    <header class="top-header" id="topHeader">
+        <div class="logo">开中印象</div>
+        <nav class="main-nav" id="mainNav">
+            <a href="#home" class="nav-link active">首页</a>
+            <a href="#festival" class="nav-link">缤纷节</a>
+            <a href="#sports" class="nav-link">运动会</a>
+            <a href="#gallery" class="nav-link">校园风采</a>
+            <a href="#forum" class="nav-link">开中论坛</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">☰</button>
+        <button class="settings-btn" id="settingsBtn" aria-label="设置">⚙️</button>
+    </header>
+
+    <!-- 内容主体 -->
+    <main class="main-content">
+        
+        <!-- 首页横幅 -->
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <h1>开中印象</h1>
+                <p>由开中学子讲述的开中故事</p>
+            </div>
+            <!-- 此处需要一张全屏背景图，请提供URL -->
+            <img src="" alt="重庆市开州中学校门或校园全景" class="hero-bg" id="heroImg">
+        </section>
+
+        <!-- 缤纷节板块 -->
+        <section id="festival" class="section">
+            <h2>🎨 缤纷节（艺术节）</h2>
+            <p class="intro-text">青春不止有试卷，还有舞台上的光芒。</p>
+            <div class="gallery">
+                <!-- 此处需要3张缤纷节图片（舞台表演、化妆、观众） -->
+                <img src="" alt="缤纷节舞台表演" class="gallery-item">
+                <img src="" alt="后台化妆准备" class="gallery-item">
+                <img src="" alt="观众欢呼" class="gallery-item">
+            </div>
+        </section>
+
+        <!-- 运动会板块 -->
+        <section id="sports" class="section">
+            <h2>🏃 运动会</h2>
+            <p class="intro-text">跑道上的风，是青春最热烈的注脚。</p>
+            <div class="gallery">
+                <!-- 此处需要3张运动会图片（接力赛、跳高、班级方阵） -->
+                <img src="" alt="百米冲刺" class="gallery-item">
+                <img src="" alt="跳高瞬间" class="gallery-item">
+                <img src="" alt="班级方阵" class="gallery-item">
+            </div>
+        </section>
+
+        <!-- 校园风采 -->
+        <section id="gallery" class="section">
+            <h2>📸 校园风采</h2>
+            <p class="intro-text">定格每一个平凡却闪光的日常。</p>
+            <div class="grid-3">
+                <!-- 此处需要6张图片：教室、食堂、宿舍、老师、学生特写、校园风景 -->
+                <img src="" alt="教室里的自习" class="grid-item">
+                <img src="" alt="美味的食堂饭菜" class="grid-item">
+                <img src="" alt="整洁的宿舍" class="grid-item">
+                <img src="" alt="亲切的老师" class="grid-item">
+                <img src="" alt="课间打闹的同学" class="grid-item">
+                <img src="" alt="校园的樱花/银杏" class="grid-item">
+            </div>
+        </section>
+
+        <!-- 论坛板块 -->
+        <section id="forum" class="section cta-section">
+            <h2>💬 开中论坛</h2>
+            <p>这里是开中学子交流的聚集地，毕业的同学记得常回来看看。</p>
+            <p><small>点击下方按钮或扫码加入，参与讨论 TOP50 热帖！</small></p>
+            <div class="forum-cta">
+                <a href="https://pd.qq.com/s/8xpnqh728?b=5" target="_blank" class="btn-primary">加入 QQ 频道</a>
+                <!-- 此处需要开中论坛的二维码图片 -->
+                <div class="qrcode-box">
+                    <img src="" alt="开中论坛 QQ 频道二维码" id="forumQr">
+                    <p>扫码加入</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部栏 (iOS/Android模式下显示) -->
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="#home" class="nav-item"><span class="icon">🏠</span> 首页</a>
+        <a href="#gallery" class="nav-item"><span class="icon">🏫</span> 风采</a>
+        <a href="#forum" class="nav-item"><span class="icon">💬</span> 论坛</a>
+        <a href="#settings" class="nav-item"><span class="icon">⚙️</span> 设置</a>
+    </nav>
+
+    <!-- 设置侧边栏 -->
+    <div id="settingsPanel" class="settings-panel">
+        <div class="settings-header">
+            <h3>⚙️ 设置</h3>
+            <button onclick="closeSettings()">×</button>
+        </div>
+        <div class="settings-body">
+            <h4>📱 平台模式切换</h4>
+            <div class="switch-group">
+                <button onclick="setPlatform('desktop')">桌面/通用模式</button>
+                <button onclick="setPlatform('android')">Android 模式 (汉堡菜单)</button>
+                <button onclick="setPlatform('ios')">iOS 模式 (底栏)</button>
+            </div>
+
+            <h4>♿ 轻松使用 (无障碍)</h4>
+            <div class="switch-group">
+                <label>
+                    <input type="checkbox" id="highContrast"> 高对比度模式
+                </label>
+                <label>
+                    <input type="checkbox" id="reduceMotion"> 减弱动态效果
+                </label>
+                <label>
+                    <input type="checkbox" id="largeText"> 大字号阅读
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
