@@ -1,144 +1,294 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>开中印象 | 学生自制宣传站</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- 无障碍支持 -->
-    <meta name="theme-color" content="#0099ff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>开州中学 · 忍道学生视界</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FA9427'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif'%3E开%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FA9427'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white'%3E开%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="开州中学学生自制宣传站——运动会、缤纷节、校园风采，火影风格致敬。非官方。">
+    <!-- 字体与原站一致 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- 主样式表（稍后提供） -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-default">
-    <!-- 合规性提示遮罩 (首次访问显示) -->
-    <div id="complianceModal" class="modal active">
-        <div class="modal-content">
-            <h3>重要提示</h3>
-            <p>本网站为<strong>重庆市开州中学学生自制</strong>的非官方宣传网站，旨在展示校园生活。</p>
-            <p>它<strong>并非</strong>重庆市开州中学官方网站。如需联系学校官方，请搜索微信公众号或抖音官方账号<strong>“重庆市开州中学”</strong>，或直接致电/致函学校。</p>
-            <p>本网站不对内容作任何形式的保证，感谢理解。</p>
-            <button onclick="acceptCompliance()">我已知晓，继续浏览</button>
+<body>
+    <!-- 合规提示模态框（保留原站风格，仅新增） -->
+    <div class="compliance-modal" id="complianceModal" style="display:flex">
+        <div class="modal-card">
+            <h2 style="font-family:var(--impact-font);">📢 非官方·忍道学生站</h2>
+            <p>本站由开州中学学生模仿火影官网风格制作，用于展示校园文化，<strong>非重庆市开州中学官方网站</strong>。</p>
+            <p>如需联系学校官方，请搜索微信公众号「重庆市开州中学」或抖音官方账号。</p>
+            <p>本站内容为学生创作，不代表学校立场。继续访问即视为同意。</p>
+            <div class="modal-actions">
+                <button class="btn-primary" id="acceptModal">进入忍道</button>
+                <button class="btn-text" id="declineModal">离开</button>
+            </div>
         </div>
     </div>
 
-    <!-- 顶部导航栏 (桌面/Android模式下显示) -->
-    <header class="top-header" id="topHeader">
-        <div class="logo">开中印象</div>
-        <nav class="main-nav" id="mainNav">
-            <a href="#home" class="nav-link active">首页</a>
-            <a href="#festival" class="nav-link">缤纷节</a>
-            <a href="#sports" class="nav-link">运动会</a>
-            <a href="#gallery" class="nav-link">校园风采</a>
-            <a href="#forum" class="nav-link">开中论坛</a>
-        </nav>
-        <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">☰</button>
-        <button class="settings-btn" id="settingsBtn" aria-label="设置">⚙️</button>
-    </header>
-
-    <!-- 内容主体 -->
-    <main class="main-content">
-        
-        <!-- 首页横幅 -->
-        <section id="home" class="hero">
-            <div class="hero-text">
-                <h1>开中印象</h1>
-                <p>由开中学子讲述的开中故事</p>
+    <!-- 设置面板（模仿原站语言切换下拉风格） -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-inner">
+            <div class="settings-header">
+                <h3>⚙️ 忍具设置</h3>
+                <button class="close-btn" id="closeSettingsBtn">✕</button>
             </div>
-            <!-- 此处需要一张全屏背景图，请提供URL -->
-            <img src="" alt="重庆市开州中学校门或校园全景" class="hero-bg" id="heroImg">
-        </section>
-
-        <!-- 缤纷节板块 -->
-        <section id="festival" class="section">
-            <h2>🎨 缤纷节（艺术节）</h2>
-            <p class="intro-text">青春不止有试卷，还有舞台上的光芒。</p>
-            <div class="gallery">
-                <!-- 此处需要3张缤纷节图片（舞台表演、化妆、观众） -->
-                <img src="" alt="缤纷节舞台表演" class="gallery-item">
-                <img src="" alt="后台化妆准备" class="gallery-item">
-                <img src="" alt="观众欢呼" class="gallery-item">
+            <div class="mode-grid">
+                <button data-mode="ios" class="mode-btn">🍎 iOS底栏</button>
+                <button data-mode="android" class="mode-btn">🤖 汉堡菜单</button>
+                <button data-mode="desktop" class="mode-btn">🖥️ 桌面</button>
+                <button data-mode="touch" class="mode-btn">✍️ 触屏平板</button>
             </div>
-        </section>
+            <label class="toggle-item">
+                <input type="checkbox" id="highContrastToggle"> 高对比度
+            </label>
+            <label class="toggle-item">
+                <input type="checkbox" id="reduceMotionToggle"> 减弱动态效果
+            </label>
+            <button class="btn-text" id="resetSettings">恢复默认</button>
+        </div>
+    </div>
 
-        <!-- 运动会板块 -->
-        <section id="sports" class="section">
-            <h2>🏃 运动会</h2>
-            <p class="intro-text">跑道上的风，是青春最热烈的注脚。</p>
-            <div class="gallery">
-                <!-- 此处需要3张运动会图片（接力赛、跳高、班级方阵） -->
-                <img src="" alt="百米冲刺" class="gallery-item">
-                <img src="" alt="跳高瞬间" class="gallery-item">
-                <img src="" alt="班级方阵" class="gallery-item">
-            </div>
-        </section>
+    <div id="__next">
+        <style data-emotion="css-global 8jkdti">/* 原站全局样式保留 */</style>
+        <div>
+            <div class="css-79elbk">
+                <h1 class="visually-hidden">开州中学 · 学生忍道</h1>
+                <div>
+                    <!-- 固定导航栏（原汁原味） -->
+                    <header class="css-12ohu0v">
+                        <a class="css-aouwtk" href="#">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50'%3E%3Crect width='200' height='50' rx='8' fill='%23FA9427'/%3E%3Ctext x='20' y='35' font-family='Bebas Neue' font-size='28' fill='white'%3E开州中学%3C/text%3E%3Ctext x='130' y='32' font-family='sans-serif' font-size='12' fill='%23FFE0B2'%3E学生视界%3C/text%3E%3C/svg%3E" alt="开州中学" class="css-9hxm2x"/>
+                        </a>
+                        <div class="css-64e3ms">
+                            <!-- 桌面导航（原站居中导航） -->
+                            <div class="css-ha8q1x">
+                                <a aria-label="动态" class="css-1gotgbk" href="#news">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M...' /%3E%3C/svg%3E" alt="news" class="css-1od4a9n"/>
+                                    <p class="css-1135xdg">动态</p>
+                                </a>
+                                <a aria-label="运动会" class="css-1gotgbk" href="#sports">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M...' /%3E%3C/svg%3E" alt="sports" class="css-1od4a9n"/>
+                                    <p class="css-1135xdg">运动会</p>
+                                </a>
+                                <a aria-label="缤纷节" class="css-1gotgbk" href="#arts">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M...' /%3E%3C/svg%3E" alt="arts" class="css-1od4a9n"/>
+                                    <p class="css-1135xdg">缤纷节</p>
+                                </a>
+                                <a aria-label="校园" class="css-1gotgbk" href="#campus">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M...' /%3E%3C/svg%3E" alt="campus" class="css-1od4a9n"/>
+                                    <p class="css-1135xdg">校园</p>
+                                </a>
+                                <a aria-label="论坛" class="css-1gotgbk" href="#forum">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M...' /%3E%3C/svg%3E" alt="forum" class="css-1od4a9n"/>
+                                    <p class="css-1135xdg">论坛</p>
+                                </a>
+                            </div>
+                            <!-- 右侧设置按钮（替代原语言切换） -->
+                            <span class="css-1lk47zq">
+                                <button class="css-14exz87" id="settingsToggle">
+                                    <div class="css-o7rt0f">⚙️</div>
+                                </button>
+                            </span>
+                        </div>
+                    </header>
 
-        <!-- 校园风采 -->
-        <section id="gallery" class="section">
-            <h2>📸 校园风采</h2>
-            <p class="intro-text">定格每一个平凡却闪光的日常。</p>
-            <div class="grid-3">
-                <!-- 此处需要6张图片：教室、食堂、宿舍、老师、学生特写、校园风景 -->
-                <img src="" alt="教室里的自习" class="grid-item">
-                <img src="" alt="美味的食堂饭菜" class="grid-item">
-                <img src="" alt="整洁的宿舍" class="grid-item">
-                <img src="" alt="亲切的老师" class="grid-item">
-                <img src="" alt="课间打闹的同学" class="grid-item">
-                <img src="" alt="校园的樱花/银杏" class="grid-item">
-            </div>
-        </section>
+                    <!-- 右侧汉堡菜单按钮（原站风格） -->
+                    <div class="css-1jfm0cu">
+                        <button aria-expanded="false" aria-label="打开菜单" class="css-tqexr7" id="hamburgerBtn">
+                            <img class="icon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Crect y='4' width='24' height='3'/%3E%3Crect y='10' width='24' height='3'/%3E%3Crect y='16' width='24' height='3'/%3E%3C/svg%3E" alt="menu"/>
+                        </button>
+                    </div>
 
-        <!-- 论坛板块 -->
-        <section id="forum" class="section cta-section">
-            <h2>💬 开中论坛</h2>
-            <p>这里是开中学子交流的聚集地，毕业的同学记得常回来看看。</p>
-            <p><small>点击下方按钮或扫码加入，参与讨论 TOP50 热帖！</small></p>
-            <div class="forum-cta">
-                <a href="https://pd.qq.com/s/8xpnqh728?b=5" target="_blank" class="btn-primary">加入 QQ 频道</a>
-                <!-- 此处需要开中论坛的二维码图片 -->
-                <div class="qrcode-box">
-                    <img src="" alt="开中论坛 QQ 频道二维码" id="forumQr">
-                    <p>扫码加入</p>
+                    <!-- 全屏菜单（原站圆形展开效果） -->
+                    <div id="menu" aria-hidden="true" class="css-1ke0au9">
+                        <div class="css-zl8t71">
+                            <div aria-hidden="true" class="css-1tbmr0d">
+                                <!-- 菜单内容替换为开州中学链接 -->
+                                <div class="css-tlcjsa"><div class="css-wbbw4p"><a class="css-f1hv8y" href="#">TOP</a></div></div>
+                                <div class="css-tlcjsa"><div class="css-wbbw4p"><a class="css-f1hv8y" href="#news">最新动态</a></div></div>
+                                <div class="css-tlcjsa">
+                                    <div class="css-wbbw4p">
+                                        <a class="css-f1hv8y" href="#sports">运动会</a>
+                                        <a class="css-1l0yaj8" href="#sports"><div class="css-i8ull2"></div><div class="css-5e40pb">精彩图集</div></a>
+                                    </div>
+                                    <div class="css-wbbw4p">
+                                        <a class="css-f1hv8y" href="#arts">缤纷艺术节</a>
+                                        <a class="css-1l0yaj8" href="#arts"><div class="css-i8ull2"></div><div class="css-5e40pb">十佳歌手</div></a>
+                                        <a class="css-1l0yaj8" href="#arts"><div class="css-i8ull2"></div><div class="css-5e40pb">书画展</div></a>
+                                    </div>
+                                </div>
+                                <div class="css-tlcjsa">
+                                    <div class="css-wbbw4p"><a class="css-f1hv8y" href="#campus">校园风采</a></div>
+                                    <div class="css-okc3re">
+                                        <div class="css-h8vqyb"><span>相关内容</span></div>
+                                        <div class="css-yplt50">
+                                            <div class="css-1xykxu6"><a class="css-f1hv8y" href="#teachers">师生掠影</a></div>
+                                            <div class="css-1xykxu6"><a class="css-f1hv8y" href="#forum">开中论坛</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="css-tlcjsa">
+                                    <div class="css-16k0uq4"><a class="css-29a2bn" href="#contact">联系我们</a></div>
+                                    <div class="css-1brb8h8">
+                                        <div class="css-19wnbk">官方社交账号</div>
+                                        <div class="css-i4khos">
+                                            <div><a href="#" target="_blank"><div class="css-fqyp1v"><img src="data:image/svg+xml..." alt="X"/></div></a></div>
+                                            <div><a href="#" target="_blank"><div class="css-fqyp1v"><img src="data:image/svg+xml..." alt="YouTube"/></div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 主内容区（背景色#FA9427） -->
+                    <main class="css-1uy9llg">
+                        <!-- Hero区域（原站loading装饰改造） -->
+                        <section>
+                            <div class="css-eaxgsz">
+                                <div class="css-uwwqev">
+                                    <div class="css-w0s94c">
+                                        <div class="css-fsn1vy">
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 72'%3E%3Ccircle cx='35' cy='36' r='30' fill='%23FA9427'/%3E%3Ctext x='35' y='45' font-size='24' text-anchor='middle' fill='white' font-family='Bebas Neue'%3E开%3C/text%3E%3C/svg%3E" width="70" height="72" alt="" class="css-12rsfhf"/>
+                                            <span class="css-yeg47r">开州中学 · 忍道青春</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 最新动态区域（原站NEWS板块） -->
+                        <section class="css-pto35h">
+                            <div class="css-218v1r">
+                                <div class="css-1s3djii">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 205 320'%3E%3Ccircle cx='100' cy='160' r='80' fill='%23FFD966' opacity='0.3'/%3E%3C/svg%3E" alt="" class="css-1xfnck5"/>
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 164 286'%3E%3Ccircle cx='80' cy='140' r='70' fill='%23FFB347' opacity='0.3'/%3E%3C/svg%3E" alt="" class="css-776r7y"/>
+                                    <a href="#" class="css-v5m5mf">
+                                        <div class="css-bm39en">
+                                            <p class="css-17kwws8">特别企划</p>
+                                            <div class="css-mfl3hl">
+                                                <p class="css-9vnmjj">CONTENTS</p>
+                                                <svg width="26" height="7" viewBox="0 0 26 7" class="icon css-qfo0qk"><path d="M16.172,7,26,3.412,16.213,0l-4,2.66H5.692A2.913,2.913,0,0,0,2.912.527,2.942,2.942,0,0,0,0,3.5,2.942,2.942,0,0,0,2.912,6.473,2.913,2.913,0,0,0,5.692,4.34h6.431ZM2.912,4.792a1.293,1.293,0,0,1,0-2.584,1.293,1.293,0,0,1,0,2.584"></path></svg>
+                                            </div>
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 70'%3E%3Crect width='200' height='70' fill='%23333'/%3E%3Ctext x='20' y='45' fill='white' font-family='Bebas Neue' font-size='28'%3ESPECIAL%3C/text%3E%3C/svg%3E" alt="" class="css-1dsem53"/>
+                                        </div>
+                                    </a>
+                                    <h2 class="visually-hidden">最新动态</h2>
+                                    <figure role="img" aria-label="最新动态" class="css-1t0qpll">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 146'%3E%3Cpath d='M0,0 L400,0 L400,146 L0,146 Z' fill='%23FA9427'/%3E%3Ctext x='20' y='100' font-family='Bebas Neue' font-size='64' fill='white'%3E最新动态%3C/text%3E%3C/svg%3E" class="css-8atqhb"/>
+                                    </figure>
+                                    <div class="css-t8723k" id="newsGrid"></div>
+                                    <div class="css-17tw7bb">
+                                        <a class="css-13e3gv5" href="#"><div class="css-wngfe7">查看更多动态</div><svg width="26" height="7" viewBox="0 0 26 7" class="icon css-auodrm"><path d="M16.172,7,26,3.412,16.213,0l-4,2.66H5.692A2.913,2.913,0,0,0,2.912.527,2.942,2.942,0,0,0,0,3.5,2.942,2.942,0,0,0,2.912,6.473,2.913,2.913,0,0,0,5.692,4.34h6.431ZM2.912,4.792a1.293,1.293,0,0,1,0-2.584,1.293,1.293,0,0,1,0,2.584"></path></svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 双卡片区域（运动会/缤纷节，原COMICS/ANIME） -->
+                        <section class="css-1j23r60">
+                            <div class="css-218v1r">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 175 175'%3E%3Ccircle cx='80' cy='80' r='70' fill='%23FA9427' opacity='0.2'/%3E%3C/svg%3E" alt="" class="css-plklv"/>
+                                <div class="css-1xsi61l">
+                                    <h2 class="visually-hidden">精彩活动</h2>
+                                    <figure role="img" aria-label="运动会" class="css-1s667lv">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 396 166'%3E%3Crect width='396' height='166' fill='%23FA9427'/%3E%3Ctext x='20' y='100' font-family='Bebas Neue' font-size='64' fill='white'%3E运动会%3C/text%3E%3C/svg%3E" class="css-8atqhb"/>
+                                    </figure>
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 329 294'%3E%3Ccircle cx='160' cy='140' r='100' fill='%23FFD966' opacity='0.2'/%3E%3C/svg%3E" alt="" class="css-171qk8v"/>
+                                    <div class="css-t8723k"></div>
+                                    <div class="css-17tw7bb">
+                                        <a class="css-13e3gv5" href="#"><div class="css-wngfe7">查看运动会图集</div><svg width="26" height="7" class="icon css-auodrm"><path d="M16.172,7,26,3.412,16.213,0l-4,2.66H5.692A2.913,2.913,0,0,0,2.912.527,2.942,2.942,0,0,0,0,3.5,2.942,2.942,0,0,0,2.912,6.473,2.913,2.913,0,0,0,5.692,4.34h6.431ZM2.912,4.792a1.293,1.293,0,0,1,0-2.584,1.293,1.293,0,0,1,0,2.584"></path></svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 黑色背景区域（原NARUTO/BORUTO故事区） -->
+                        <section class="css-qp6edm">
+                            <div class="css-218v1r">
+                                <div class="css-l8w6va">
+                                    <a class="css-ttajl1" href="#">
+                                        <div class="css-yezmbp"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 200'%3E%3Crect width='240' height='200' fill='%23222'/%3E%3Ctext x='20' y='110' fill='%23ff7201' font-family='Bebas Neue' font-size='36'%3E缤纷节%3C/text%3E%3C/svg%3E" alt="" class="css-mqdp7a"/></div>
+                                        <div class="info css-zg1vud">
+                                            <p class="css-11x8blm">缤纷艺术节</p>
+                                            <div class="css-ac0sqm"><p class="css-1cj9ivc">回顾</p></div>
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 187 30'%3E%3Ctext fill='%23ff7201' font-family='Bebas Neue' font-size='24'%3E2025 春%3C/text%3E%3C/svg%3E" alt="" class="css-1lzj2g4"/>
+                                        </div>
+                                    </a>
+                                    <a class="css-ttajl1" href="#">
+                                        <div class="css-yezmbp"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 200'%3E%3Crect width='240' height='200' fill='%23111'/%3E%3Ctext x='20' y='110' fill='%230099d8' font-family='Bebas Neue' font-size='36'%3E开中论坛%3C/text%3E%3C/svg%3E" alt="" class="css-mqdp7a"/></div>
+                                        <div class="info css-1qhe2e1">
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 152 30'%3E%3Ctext fill='%230099d8' font-family='Bebas Neue' font-size='20'%3EQQ频道%3C/text%3E%3C/svg%3E" alt="" class="css-1qlio1p"/>
+                                            <p class="css-w73c5m">学生聚集地</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- X关注卡片（原站样式）改为论坛入口 -->
+                        <section class="css-12qy8fz">
+                            <div class="css-vgsfa">
+                                <p class="css-slv9t2">加入开中论坛，获取最新动态！</p>
+                                <div>
+                                    <a href="https://pd.qq.com/s/8xpnqh728?b=5" target="_blank">
+                                        <div class="css-37bva5">
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 46'%3E%3Ccircle cx='23' cy='23' r='23' fill='white'/%3E%3Ctext x='23' y='32' text-anchor='middle' font-size='24'%3E💬%3C/text%3E%3C/svg%3E" alt="QQ" class="css-zwij67"/>
+                                            <p class="css-15hgvdc"><span class="css-79i9g7">点击加入 </span>开中论坛 QQ频道</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 底部声明区 -->
+                        <section class="css-x339e9">
+                            <div class="css-218v1r">
+                                <div class="css-x60ysr">
+                                    <p>本网站为开州中学学生自制，模仿《火影忍者》官网风格。部分图片为占位符，请替换为实际照片。</p>
+                                    <p>如需联系学校官方，请搜索微信公众号「重庆市开州中学」或抖音官方账号。</p>
+                                    <p>© 学生宣传组 · 非官方</p>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- 页脚（原站版权信息替换） -->
+                    <footer class="css-12mpi57">
+                        <div class="css-k008qs">
+                            <div class="css-1icohot">
+                                <div class="css-1l81uhi">
+                                    <div class="css-1f7731q">
+                                        <span style="color:white; font-family:var(--impact-font);">开州中学学生视界</span>
+                                    </div>
+                                    <div class="css-1q37jtf">
+                                        <p>© 2025 开州中学学生宣传组</p>
+                                        <p>致敬《NARUTO》原作：岸本齐史 / 集英社</p>
+                                    </div>
+                                </div>
+                                <div class="css-1vapgq4">
+                                    <div class="css-rbfd2v">
+                                        <span class="css-5emgra"><a href="#" id="showComplianceAgain">网站声明</a></span>
+                                        <div class="css-1dadst9"></div>
+                                        <span class="css-5emgra"><a href="#" id="a11yTrigger">轻松使用</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
             </div>
-        </section>
-
-    </main>
-
-    <!-- 底部栏 (iOS/Android模式下显示) -->
-    <nav class="bottom-nav" id="bottomNav">
-        <a href="#home" class="nav-item"><span class="icon">🏠</span> 首页</a>
-        <a href="#gallery" class="nav-item"><span class="icon">🏫</span> 风采</a>
-        <a href="#forum" class="nav-item"><span class="icon">💬</span> 论坛</a>
-        <a href="#settings" class="nav-item"><span class="icon">⚙️</span> 设置</a>
-    </nav>
-
-    <!-- 设置侧边栏 -->
-    <div id="settingsPanel" class="settings-panel">
-        <div class="settings-header">
-            <h3>⚙️ 设置</h3>
-            <button onclick="closeSettings()">×</button>
-        </div>
-        <div class="settings-body">
-            <h4>📱 平台模式切换</h4>
-            <div class="switch-group">
-                <button onclick="setPlatform('desktop')">桌面/通用模式</button>
-                <button onclick="setPlatform('android')">Android 模式 (汉堡菜单)</button>
-                <button onclick="setPlatform('ios')">iOS 模式 (底栏)</button>
-            </div>
-
-            <h4>♿ 轻松使用 (无障碍)</h4>
-            <div class="switch-group">
-                <label>
-                    <input type="checkbox" id="highContrast"> 高对比度模式
-                </label>
-                <label>
-                    <input type="checkbox" id="reduceMotion"> 减弱动态效果
-                </label>
-                <label>
-                    <input type="checkbox" id="largeText"> 大字号阅读
-                </label>
-            </div>
         </div>
     </div>
+
+    <!-- iOS底栏（模式切换显示） -->
+    <nav class="ios-tabbar" id="iosTabbar">
+        <a href="#news">📰</a><a href="#sports">🏃</a><a href="#arts">🎨</a><a href="#campus">📸</a><a href="#forum">💬</a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
